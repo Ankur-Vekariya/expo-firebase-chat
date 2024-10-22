@@ -9,12 +9,12 @@ import { getFirestore, collection } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBp-OVfUrTJpX-rTPvNxEhRDRoLr_UkQXo",
-  authDomain: "expo-firebase-chat-5e638.firebaseapp.com",
-  projectId: "expo-firebase-chat-5e638",
-  storageBucket: "expo-firebase-chat-5e638.appspot.com",
-  messagingSenderId: "934753876289",
-  appId: "1:934753876289:web:49e0b0a42bd954ad02c9c0",
+  apiKey: "AIzaSyAPorrYX0fXW6-jXWgDJt-0cL8p0VgsQVs",
+  authDomain: "expo-firebase-chat-d107e.firebaseapp.com",
+  projectId: "expo-firebase-chat-d107e",
+  storageBucket: "expo-firebase-chat-d107e.appspot.com",
+  messagingSenderId: "762653058314",
+  appId: "1:762653058314:web:16fac3209b846457d6c6f3",
 };
 
 // Initialize Firebase
@@ -28,4 +28,3 @@ export const db = getFirestore(app);
 
 export const usersRef = collection(db, "users");
 export const roomRef = collection(db, "room");
-

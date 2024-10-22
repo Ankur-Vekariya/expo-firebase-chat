@@ -1,4 +1,4 @@
-import { View, Text, Platform } from "react-native";
+import { View, Text, Platform, Pressable, Alert } from "react-native";
 import React from "react";
 import {
   widthPercentageToDP as wp,
@@ -12,10 +12,19 @@ const ios = Platform.OS == "ios";
 
 export default function HomeHeader() {
   const { top } = useSafeAreaInsets();
-  const { user } = useAuth();
+  const { logout, user } = useAuth();
   const blurhash =
     "|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[";
 
+  const handleLogout = async () => {
+    console.log("logout called");
+    let response = await logout();
+    if (response.success) {
+      Alert.alert("Sign out", "success");
+    } else {
+      Alert.alert("Sign out", response?.msg);
+    }
+  };
   return (
     <View
       style={{ paddingTop: ios ? top : top + 10 }}
@@ -27,12 +36,15 @@ export default function HomeHeader() {
         </Text>
       </View>
       <View>
-        <Image
+        <Pressable onPress={handleLogout}>
+          <Text>Logout</Text>
+        </Pressable>
+        {/* <Image
           style={{ height: hp(4.3), aspectRatio: 1, borderRadius: 100 }}
           source={user.profileUrl}
           placeholder={blurhash}
           transition={500}
-        />
+        /> */}
       </View>
     </View>
   );

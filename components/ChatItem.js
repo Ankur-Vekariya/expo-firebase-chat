@@ -5,18 +5,17 @@ import {
   Pressable,
   StyleSheet,
   TouchableHighlight,
+  Image,
 } from "react-native";
 import React from "react";
-import { Image } from "expo-image";
+// import { Image } from "expo-image";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 
-export default function ChatItem({ item }) {
-  const onPress = () => {
-    console.log("chat pressed");
-  };
+export default function ChatItem({ item, noBorder, router }) {
+  console.log("item-------------------------------", item);
   return (
     // <Pressable
     //   onPress={() => {
@@ -58,8 +57,10 @@ export default function ChatItem({ item }) {
     //     </Text>
     //   </View>
     // </Pressable>
-    <TouchableHighlight
-      onPress={onPress}
+    <Pressable
+      onPress={() => {
+        router.push("/chatRoom");
+      }}
       style={({ pressed }) => [
         {
           backgroundColor: pressed ? "blue" : "white",
@@ -67,41 +68,41 @@ export default function ChatItem({ item }) {
           padding: 6,
         },
       ]}
-      className="flex-row justify-between mx-4 items-center gap-3 mb-4 pb-4
-      border-b-neutral-800"
+      className={`flex-row justify-between mx-4 items-center gap-3 mb-4 pb-4 ${
+        noBorder ? "" : `border-b border-b-neutral-300`
+      }`}
     >
-      <View>
-        <Image
-          style={{ height: hp(6), width: hp(6) }}
-          source={require("../assets/images/favicon.png")}
-          // placeholder={blurhash}
-          transition={500}
-          className="rounded-full"
-        />
-        <View className="flex-1 gap-1">
-          <View className="flex-row justify-between">
-            <Text
-              style={{ fontSize: hp(2) }}
-              className="font-semibold text-neutral-700"
-            >
-              Nomi
-            </Text>
-            <Text
-              style={{ fontSize: hp(1.8) }}
-              className="font-medium text-neutral-500"
-            >
-              05:20
-            </Text>
-          </View>
+      <Image
+        style={{ height: hp(6), width: hp(6) }}
+        source={{ uri: item?.item?.profileUrl }}
+        // placeholder={blurhash}
+        transition={500}
+        className="rounded-full"
+      />
+      <View className="flex-1 gap-1">
+        <View className="flex-row justify-between">
           <Text
             style={{ fontSize: hp(2) }}
+            className="font-semibold text-neutral-700"
+          >
+            {/* {"nomi"} */}
+            {item?.item?.username}
+          </Text>
+          <Text
+            style={{ fontSize: hp(1.8) }}
             className="font-medium text-neutral-500"
           >
-            Nomi
+            05:20
           </Text>
         </View>
+        <Text
+          style={{ fontSize: hp(2) }}
+          className="font-medium text-neutral-500"
+        >
+          Nomi
+        </Text>
       </View>
-    </TouchableHighlight>
+    </Pressable>
   );
 }
 

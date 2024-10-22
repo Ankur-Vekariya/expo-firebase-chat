@@ -14,12 +14,14 @@ const MainLayout = () => {
     if (typeof isAuthenticated == "undefined") return;
     const inApp = segments[0] == "(app)";
     if (isAuthenticated && !inApp) {
+      console.log("isAuthenticated", isAuthenticated);
       // redirect to home
-      router.replace('home')
+      router.replace("home");
     } else if (isAuthenticated == false) {
-      //redirect to sign in page
-      router.replace('signIn')
+      console.log("signIn");
 
+      //redirect to sign in page
+      router.replace("signIn");
     }
   }, [isAuthenticated]);
 

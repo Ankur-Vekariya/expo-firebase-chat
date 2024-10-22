@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "expo-firebase-chat",
-    "slug": "expo-firebase-chat",
+    "slug": "chats",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -22,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ankur_vekariya.chats"
     },
     "web": {
       "bundler": "metro",
@@ -34,6 +35,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "2b7df0eb-79a7-402d-9790-ef58bae3b29a"
+      }
+    },
+    "owner": "ankur_vekariya"
   }
 }
